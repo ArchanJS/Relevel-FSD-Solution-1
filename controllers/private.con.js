@@ -2,6 +2,7 @@ const db=require('../models');
 const User=db.users;
 const Book=db.books;
 
+// Book creation
 exports.createBook=async(req,res)=>{
     try {
         let {name,author,publishedOn}=req.body;
@@ -15,6 +16,7 @@ exports.createBook=async(req,res)=>{
     }
 }
 
+// Getting all books
 exports.getAllBooks=async(req,res)=>{
     try {
         const books=await Book.findAll();
@@ -25,6 +27,7 @@ exports.getAllBooks=async(req,res)=>{
     }
 }
 
+// Delete/Rent/Return
 exports.deleteRentReturn=async(req,res)=>{
     try {
         let del=req.query.delete,rent=req.query.rent,ret=req.query.return;
@@ -68,6 +71,7 @@ exports.deleteRentReturn=async(req,res)=>{
     }
 }
 
+// Get all rents of an user
 exports.getRentsByAnUser=async(req,res)=>{
     try {
         const {userId}=req.params;
